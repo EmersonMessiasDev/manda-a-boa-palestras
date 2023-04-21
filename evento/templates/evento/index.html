@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/home.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+<nav class="mobile-menu">
+    <ul>
+        <li><a href="#">Entrar</a></li>
+        <li><a href="{% url 'evento:eventos' %}" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="section-1">
+        <div class="section-1-main">
+            <nav>
+                <div class="nav-logo">
+                    <a href="index.html"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="100"></a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="#">Entrar</a></li>
+                        {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
+                        <li><a href="#" class="product-link">Area do <span>Palestrante</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-mobile-menu-btn">
+                    
+                    <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
+                </div>
+            </nav>
+            <div class="section-content">
+                <h1 class="section-1-title" style="color: white;">Palestra mais dinamica?</h1>
+                <p class="section-1-desc">Sim isso mesmo, quer deixar sua palestra mais dinamicas, e evitar a timidez das perguntas dos espectadores?</p>
+                <a href="{% url 'evento:eventos' %}" class="product-link">Ver Eventos <span>Disponiveis</span></a>
+                {% comment %} <p class="section-1-alt-txt">Faça um teste agora.</p> {% endcomment %}
+                <img src="{% static 'evento/img/home1.png' %}" alt="" class="section-1-img">
+            </div>
+        </div>
+    </section>
+    <section class="section-2">
+        <div class="section-2-main">
+            <div class="section-2-1">
+                <h1 class="section-2-1-title">Crie um evento e gere automaticamente um QR Code para seus espectadores!</h1>
+                <p class="section-2-1-desc">Com esse QR Code, seus espectadores poderão enviar perguntas diretamente para um dos palestrantes durante o evento, deixando a timidez de lado e tornando o momento mais dinâmico e interativo.</p>
+                <p>Também é importante ressaltar que todas as perguntas enviadas pelos espectadores passam por um filtro para garantir que palavras mal-intencionadas sejam censuradas, promovendo um ambiente seguro e respeitoso para todos os participantes. Assim, você pode ter certeza de que todas as dúvidas e interações serão construtivas e enriquecedoras para o evento.</p>
+                <a href="{% url 'evento:eventos' %}" class="product-link">Ver Eventos <span>Disponiveis</span></a>            </div>
+            <div class="section-2-2">
+                <img src="{% static 'evento/img/home2.png' %}" alt="" class="section-2-2-img">
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="100"></a>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-text">
+            <p>Desenvolvido - <i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/emerson-messias/"><span> Emerson Messias</span></a></p>
+        </div>
+    </div>
+</footer>
+{% endblock %}

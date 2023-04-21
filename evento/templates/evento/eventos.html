@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/eventos.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+<div id="login-panel">
+    <p class="text-center">
+        <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
+    </p>
+    <h1>Eventos Disponiveis</h1>
+    <table class="table table-striped" style="color: white;">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Local</th>
+            <th>Acesso</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for evento in eventos %}
+          <tr>
+            <td>{{ evento.nome }}</td>
+            <td>{{ evento.data|date:"d/m/Y" }}</td>
+            <td>{{ evento.local }}</td>
+            {% if evento.senha %}
+            <td><a data-toggle="modal" data-target="#alterar-senha" class="product-link">Interagir com palestrantes</a>
+
+            {% else %}
+            <td><a href="{% url 'evento:pergunta' evento.id %}" class="product-link">Interagir com palestrantes</a>
+            {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+<!-- Modal -->
+<div class="modal fade bs-modal-sm" id="alterar-senha" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+      
+      <div class="tab-pane fade active in" id="signin">
+        <h3 style="color: black;">Evento Privado!</h3>
+            <form class="form-horizontal">
+            <fieldset>
+            <!-- Sign In Form -->
+            <!-- Text input-->
+            <div class="control-group">
+              <div class="controls">
+                <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="Digite o codigo do evento" class="input-medium">
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for="signin"></label>
+              <div class="controls">
+                <button id="signin" name="signin" class="btn btn-success">Entrar</button>
+              </div>
+            </div>
+            </fieldset>
+            </form>
+        </div>
+
+            </fieldset>
+            </form>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

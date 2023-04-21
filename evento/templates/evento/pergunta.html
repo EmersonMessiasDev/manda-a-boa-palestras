@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/pergunta.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+<div id="login-panel">
+    <p class="text-center">
+        <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
+    </p>
+    <h2>Evento - {{evento.nome}}</h2>
+    <form action="{% url 'evento:faz_pergunta' evento.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" id="user" name="nome" placeholder="Digite seu nome">
+        <br>
+        <select id="pessoa" placeholder="Palestrante" name="palestrante">
+            <option value="">Para quem quer fazer a pergunta?</option>
+            {% for palestrante in palestrante  %}
+            <option value="{{palestrante.nome}}">{{palestrante.nome}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <textarea id="pergunta" placeholder="Pergunta" name="pergunta" rows="4" cols="50"></textarea>
+        <hr>
+        <button type="submit" class="login-button">Enviar Pergunta</button>
+    </form>
+    
+</div>
+{% endblock %}

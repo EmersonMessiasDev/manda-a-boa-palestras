@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/chat.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+ <!-- Chat header -->
+ <div class="nav py-3 ">
+    <div class="container ">
+        <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
+        <h4 class="d-inline" style="color: white;">Perguntas - {{evento.nome}}</h4>
+    </div>
+</div>
+<!-- Chat container -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 imagem">
+            <img src="{% static 'evento/img/mandaAboa.png' %}" alt="QR Code" class="mx-auto" height="480" width="524" >
+        </div>
+        
+        <div class="col-lg-9 chat-container mt-3">
+            <!-- Chat messages -->
+            {% for chat in  chat %}
+            <div class="chat-msg">
+                <div class="msg-header">
+                    <img src="{% static 'evento/img/logo-dialogo.png' %}" alt="User" class="mr-2">
+                    <h6><strong>{{chat.nome}}</strong></h6>
+                </div>
+                <div class="msg-body alert alert-primary">
+                    {{chat.pegunta}}. 
+                </div>
+                <h5>Pergunta para: <strong>{{chat.palestrante}}</strong></h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class=" text-light py-3">
+    <div class="col-sm-12 col-md-12 mx-auto text-center linkedin sticky-footer" style="position: absolute; bottom: 0" >
+        <a href="https://www.linkedin.com/in/emerson-messias/" target="_blank" style="color: white;">
+           Desenvolvido por: <i class="bi bi-linkedin"></i> <strong >Emerson Messias</strong> <br><br>
+        </a>
+      </div>
+</footer>
+{% endblock %}

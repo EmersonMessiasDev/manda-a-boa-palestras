@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/pergunta.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+<div id="login-panel" class="d-flex flex-column align-items-center">
+    <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
+    <h4>Acesse e deixe sua duvida.</h4>
+    <form class="d-flex flex-column align-items-center">
+      <img src="{% static 'evento/img/download.png' %}" height="400" width="400" />
+    </form>
+  </div>
+  
+{% endblock %}

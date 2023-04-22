@@ -10,22 +10,29 @@ class Evento(models.Model):
     data = models.DateField(null=False)
     local = models.CharField(max_length=255)
     qrCode = models.ImageField(upload_to='qr_codes',blank=True, null=True)
-    senha = models.CharField(max_length=10, blank=True, null=True)
+    pin = models.CharField(max_length=10, blank=True, null=True)
            
     def __str__(self) -> str:
         return self.nome
     
     
     def save(self, *args, **kwargs):
-        qrcode_image = qrcode.make(f'http://127.0.0.1:8000/faz_pergunta/{self.pk}')
-        canvas = Image.new('RGB',(350,350), 'white')
-        draw = ImageDraw.Draw(canvas)
-        canvas.paste(qrcode_image)
+        # Define os dados para o QR code
+        data = f'http://127.0.0.1:8000/faz_pergunta/{self.pk}'
+
+        # Cria o QR code
+        qr = qrcode.QRCode(version=1, box_size=10, border=5)
+        qr.add_data(data)
+        qr.make(fit=True)
+        qr_img = qr.make_image(fill_color='black', back_color='white')
+
+
+        # Salva o QR code personalizado
         fname = f'qr_code-{self.nome}'+'.png'
         buffer = BytesIO()
-        canvas.save(buffer, 'PNG')
+        qr_img.save(buffer, 'PNG')
         self.qrCode.save(fname, File(buffer), save=False)
-        canvas.close()
+
         super().save(*args, **kwargs)
 
     

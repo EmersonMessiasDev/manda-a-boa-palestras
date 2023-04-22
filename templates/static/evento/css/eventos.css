@@ -8,6 +8,11 @@ body {
   background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 
@@ -130,6 +135,19 @@ label a {
 	img {
     margin-left: -9rem;
 	}
+	.nav-logo{
+		margin-left: 5rem;
+	}
+	body {
+		background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		justify-content: center;
+		height: 101.5vh;
+		overflow-x: hidden;
+	  }
 }
 
 

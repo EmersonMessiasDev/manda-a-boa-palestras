@@ -10,14 +10,11 @@
   <div class="section-1-main">
       <nav>
           <div class="nav-logo">
-              <a href="index.html"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="100"></a>
+              <a href="{% url 'evento:home' %}"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="100"></a>
           </div>
           <div class="nav-links">
               <ul>
-                  <li><a href="{% url 'evento:home' %}">Inicio</a></li>
-                  <li><a href="#">Entrar</a></li>
-                  {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
-                  <li><a href="#" class="product-link">Area do <span>Palestrante</span></a></li>
+                  <li><a href="{% url 'evento:home' %}">INICIO</a></li>
               </ul>
           </div>
           
@@ -31,72 +28,18 @@
     <p class="text-center">
         <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
     </p>
-    <h1>Eventos Disponiveis</h1>
-    <table class="table table-striped" style="color: white;">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Data</th>
-            <th>Local</th>
-            <th>Acesso</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for evento in eventos %}
-          <tr>
-            <td>{{ evento.nome }}</td>
-            <td>{{ evento.data|date:"d/m/Y" }}</td>
-            <td>{{ evento.local }}</td>
-            {% if evento.senha %}
-            <td><a data-toggle="modal" data-target="#alterar-senha" class="product-link">Interagir com palestrantes</a>
-
-            {% else %}
-            <td><a href="{% url 'evento:pergunta' evento.id %}" class="product-link">Interagir com palestrantes</a>
-            {% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-<!-- Modal -->
-<div class="modal fade bs-modal-sm" id="alterar-senha" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-
+      <form action="" method="POST">
+          {% csrf_token %}
+          <input type="text" id="user" name="nome" placeholder="PIN do evento">
+          <br>
+          <button type="submit" class="login-button">ACESSAR</button>
+      </form>
       
-      <div class="modal-body">
-        <div id="myTabContent" class="tab-content">
-      
-      <div class="tab-pane fade active in" id="signin">
-        <h3 style="color: black;">Evento Privado!</h3>
-            <form class="form-horizontal">
-            <fieldset>
-            <!-- Sign In Form -->
-            <!-- Text input-->
-            <div class="control-group">
-              <div class="controls">
-                <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="Digite o codigo do evento" class="input-medium">
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="control-group">
-              <label class="control-label" for="signin"></label>
-              <div class="controls">
-                <button id="signin" name="signin" class="btn btn-success">Entrar</button>
-              </div>
-            </div>
-            </fieldset>
-            </form>
-        </div>
-
-            </fieldset>
-            </form>
-      </div>
-    </div>
-      </div>
-    </div>
   </div>
 </div>
-</div>
+  <div class="col-sm-12 col-md-12 mx-auto text-center linkedin sticky-footer" style="position: absolute; bottom: 0" >
+      <a href="https://www.linkedin.com/in/emerson-messias/" target="_blank" style="color: white;">
+         Desenvolvido por: <i class="bi bi-linkedin"></i> <strong >Emerson Messias</strong> <br><br>
+      </a>
+    </div>
 {% endblock %}

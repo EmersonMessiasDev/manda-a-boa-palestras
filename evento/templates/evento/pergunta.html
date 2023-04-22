@@ -9,15 +9,16 @@
 <section class="section-1">
     <div class="section-1-main">
         <nav>
-          <div class="container ">
+          <div class="container imagem-nav">
+            <a href="{% url 'evento:home'%}">
             <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
-            <h4 class="d-inline" style="color: white;">Evento - {{evento.nome}}</h4>
+        </a>
+            <h4 class="d-inline" style="color: white;">{{evento.nome}}</h4>
         </div>
             <div class="nav-links">
               <ul>
                   {% comment %} <li><a href="#">Entrar</a></li> {% endcomment %}
                   {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
-                  <li><a href="{% url 'evento:eventos' %}" class="product-link">Eventos</a></li>
               </ul>
           </div>
             
@@ -31,7 +32,7 @@
     <p class="text-center">
         <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
     </p>
-    <h2>Evento - {{evento.nome}}</h2>
+    <h3>Faça sua pergunta</h3>
     <form action="{% url 'evento:faz_pergunta' evento.id %}" method="POST">
         {% csrf_token %}
         <input type="text" id="user" name="nome" placeholder="Digite seu nome">
@@ -49,4 +50,5 @@
     </form>
     
 </div>
+
 {% endblock %}

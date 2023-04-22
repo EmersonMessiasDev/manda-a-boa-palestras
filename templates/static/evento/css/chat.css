@@ -72,9 +72,10 @@ html, body {
     margin-left: calc(var(--bs-gutter-x) * -.5);
 }
 @media screen and (max-width: 450px) {
-	footer {
-    display: none;
-	}
+    .linkedin {
+
+        margin-left: 7rem;
+      }
     .imagem {
         display: none;
     }

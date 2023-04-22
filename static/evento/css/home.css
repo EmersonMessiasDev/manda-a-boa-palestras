@@ -37,6 +37,9 @@ main .section-1 {
     display: flex;
     justify-content: center;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 main .section-1 .section-1-main {
     width: 80%;
     padding: 50px 0px 0px 0px;
@@ -228,4 +231,23 @@ footer .footer-main .footer-text p a:hover {
         flex-direction: column;
         row-gap: 10px;
     }
+}
+/* Estilos para telas com zoom de 70% */
+@media (max-width: 767px) and (max-resolution: 77dpi) {
+  /* Estilos para telas com zoom de 70% aqui */
+}
+
+/* Estilos para telas com zoom de 80% */
+@media (max-width: 767px) and (max-resolution: 96dpi) {
+  /* Estilos para telas com zoom de 80% aqui */
+}
+
+/* Estilos para telas com zoom de 90% */
+@media (max-width: 767px) and (max-resolution: 108dpi) {
+  /* Estilos para telas com zoom de 90% aqui */
+}
+
+/* Estilos para telas com zoom de 100% */
+@media (max-width: 767px) and (max-resolution: 120dpi) {
+  /* Estilos para telas com zoom de 100% aqui */
 }

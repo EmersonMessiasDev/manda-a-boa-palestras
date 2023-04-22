@@ -72,9 +72,10 @@ html, body {
     margin-left: calc(var(--bs-gutter-x) * -.5);
 }
 @media screen and (max-width: 450px) {
-	footer {
-    display: none;
-	}
+    .linkedin {
+
+        margin-left: 7rem;
+      }
     .imagem {
         display: none;
     }
@@ -141,4 +142,24 @@ html, body {
 .section-1 .section-1-main .section-content .section-1-img {
     margin-top: 50px;
     width: 100%;
+}
+
+/* Estilos para telas com zoom de 70% */
+@media (max-width: 767px) and (max-resolution: 77dpi) {
+  /* Estilos para telas com zoom de 70% aqui */
+}
+
+/* Estilos para telas com zoom de 80% */
+@media (max-width: 767px) and (max-resolution: 96dpi) {
+  /* Estilos para telas com zoom de 80% aqui */
+}
+
+/* Estilos para telas com zoom de 90% */
+@media (max-width: 767px) and (max-resolution: 108dpi) {
+  /* Estilos para telas com zoom de 90% aqui */
+}
+
+/* Estilos para telas com zoom de 100% */
+@media (max-width: 767px) and (max-resolution: 120dpi) {
+  /* Estilos para telas com zoom de 100% aqui */
 }

@@ -8,6 +8,11 @@ body {
   background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow-x: hidden;
 }
 #login-panel, #signup-panel {
 	position: absolute;
@@ -117,11 +122,34 @@ label a {
 	label {
 		width: 80%;
 	}
+
 }
 
 @media screen and (max-width: 450px) {
 	img {
     margin-left: -9rem;
+	}
+	body {
+		background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		justify-content: center;
+		height: 104.5vh;
+		overflow-x: hidden;
+	  }
+	  .section-1 .imagem-nav {
+		margin-left: 10rem;
+		align-items: center;
+	}
+	.QR-CODE-MOBILE{
+		margin-left: 7rem;
+		
+	}
+	.mandaboa{
+		margin-left: 2rem;
+		margin-top: 5rem;
 	}
 }
 .section-1 {
@@ -131,6 +159,7 @@ label a {
     background-position: center;
     display: flex;
     justify-content: center;
+	z-index: 9999 !important;
 }
 .section-1 .section-1-main {
     width: 80%;
@@ -185,4 +214,25 @@ label a {
 .section-1 .section-1-main .section-content .section-1-img {
     margin-top: 50px;
     width: 100%;
+}
+
+
+/* Estilos para telas com zoom de 70% */
+@media (max-width: 767px) and (max-resolution: 77dpi) {
+  /* Estilos para telas com zoom de 70% aqui */
+}
+
+/* Estilos para telas com zoom de 80% */
+@media (max-width: 767px) and (max-resolution: 96dpi) {
+  /* Estilos para telas com zoom de 80% aqui */
+}
+
+/* Estilos para telas com zoom de 90% */
+@media (max-width: 767px) and (max-resolution: 108dpi) {
+  /* Estilos para telas com zoom de 90% aqui */
+}
+
+/* Estilos para telas com zoom de 100% */
+@media (max-width: 767px) and (max-resolution: 120dpi) {
+  /* Estilos para telas com zoom de 100% aqui */
 }

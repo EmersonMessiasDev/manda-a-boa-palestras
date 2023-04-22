@@ -7,7 +7,7 @@ class PalestrantesEmLinha(admin.StackedInline):
 
 class PerguntaEmLinha(admin.StackedInline):
     model = Pergunta
-    # readonly_fields = ['nome', 'palestrante','evento','pegunta']
+    readonly_fields = ['nome', 'palestrante','evento','pegunta']
 
 
 class EventoAdmin(admin.ModelAdmin):

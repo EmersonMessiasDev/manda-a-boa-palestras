@@ -6,6 +6,8 @@
 }
 body {
   background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -17,7 +19,7 @@ body {
 #login-panel, #signup-panel {
 	position: absolute;
 	width: 700px;
-	top: 30%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
@@ -143,3 +145,71 @@ label a {
   .modal-dialog {
 	margin-top: 100px;
   }
+
+  main  {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.section-1 {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+.section-1 .section-1-main {
+    width: 80%;
+    padding: 50px 0px 0px 0px;
+}
+.section-1 .section-1-main nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.section-1 .section-1-main nav .nav-logo img, main .section-1 .section-1-main nav .nav-links ul li a img {
+    display: block;
+}
+.section-1 .section-1-main nav .nav-links ul {
+    display: flex;
+    column-gap: 25px;
+    list-style-type: none;
+    align-items: center;
+}
+.section-1 .section-1-main nav .nav-links ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 400;
+}
+.section-1 .section-1-main nav .nav-mobile-menu-btn {
+    cursor: pointer;
+    display: none;
+}
+.section-1 .section-1-main nav .nav-mobile-menu-btn img {
+    display: block;
+}
+.section-1 .section-1-main .section-content {
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: center;
+}
+.section-1 .section-1-main .section-content .section-1-title {
+    font-size: 40px;
+    line-height: 42px;
+    text-align: center;
+}
+.section-1 .section-1-main .section-content .section-1-desc, main .section-1 .section-1-main .section-content .section-1-alt-txt {
+    color: #ffffff;
+    line-height: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+.section-1 .section-1-main .section-content .section-1-img {
+    margin-top: 50px;
+    width: 100%;
+}

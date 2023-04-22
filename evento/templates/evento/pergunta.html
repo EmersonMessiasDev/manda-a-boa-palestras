@@ -6,6 +6,27 @@
 {% endblock %}
 
 {% block 'conteudo' %}
+<section class="section-1">
+    <div class="section-1-main">
+        <nav>
+          <div class="container ">
+            <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
+            <h4 class="d-inline" style="color: white;">Evento - {{evento.nome}}</h4>
+        </div>
+            <div class="nav-links">
+              <ul>
+                  {% comment %} <li><a href="#">Entrar</a></li> {% endcomment %}
+                  {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
+                  <li><a href="{% url 'evento:eventos' %}" class="product-link">Eventos</a></li>
+              </ul>
+          </div>
+            
+            <div class="nav-mobile-menu-btn">
+                
+                <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
+            </div>
+        </nav>
+  </section>
 <div id="login-panel">
     <p class="text-center">
         <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />

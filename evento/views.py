@@ -22,7 +22,12 @@ def eventos(request):
 
 
 def qrCorde(request, id):
-    return render(request, 'evento/qrCode.html')
+    evento_id = Evento.objects.get(id=id)
+    
+    context = {'evento':evento_id,
+               }
+    
+    return render(request, 'evento/qrCode.html', context)
 
 
 def faz_pergunta(request, id):

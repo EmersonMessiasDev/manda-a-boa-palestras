@@ -30,7 +30,7 @@
     </p>
       <form action="{% url 'evento:validar_pin' %}" method="POST">
           {% csrf_token %}
-          <input type="text" id="user" name="pin" placeholder="PIN do evento">
+          <input type="number" id="user" name="pin" placeholder="PIN do evento">
           <br>
           <button type="submit" class="login-button">ACESSAR</button>
           

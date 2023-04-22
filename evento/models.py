@@ -18,7 +18,7 @@ class Evento(models.Model):
     def __str__(self) -> str:
         return self.nome
     
-   
+    
     def save(self, *args, **kwargs):
         if not self.id:
             super().save(*args, **kwargs)

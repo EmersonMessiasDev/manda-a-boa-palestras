@@ -21,29 +21,31 @@ def eventos(request):
 
 def validar_pin(request):
     pin = request.POST.get('pin')
-    evento = Evento.objects.filter(pin=pin)
-    data_evento = Evento.objects.get(pin=pin)
-    data = data_evento.data.strftime('%Y-%m-%d')
-        
     if not pin:
         messages.add_message(request, constants.ERROR, 'Insira o pin e clique em ACESSAR!')
+    else:
+        try:
+            pin = int(pin)
+            evento = Evento.objects.filter(pin=pin)
+        except:
+            messages.add_message(request, constants.ERROR, 'Insira um pin valido!')
+            return  redirect('evento:eventos')
+            
+        if len(evento) == 0:
+            print('não tem evento')
+            messages.add_message(request, constants.ERROR, 'PIN invalido!')
         
-    elif len(evento) == 0:
-        print('não tem evento')
-        messages.add_message(request, constants.ERROR, 'PIN invalido!')
-        
-    elif data != data_formatada:
-        messages.add_message(request, constants.ERROR, 'Esse evento acabou!')
-        
-    elif data == data_formatada:
-        return  redirect('evento:pergunta', id=data_evento.id)
+        elif len(evento) > 0:
+            data_evento = Evento.objects.get(pin=pin)
+            data = data_evento.data.strftime('%Y-%m-%d')    
+            if data != data_formatada:
+                messages.add_message(request, constants.ERROR, 'Esse evento acabou!')
+                
+            elif data == data_formatada:
+                return  redirect('evento:pergunta', id=data_evento.id)
 
-        
-    
         
     return render(request, 'evento/eventos.html')
-
-
 
 
 def qrCorde(request, id):
@@ -81,7 +83,7 @@ def faz_pergunta(request, id):
     
     return render(request, 'evento/pergunta.html', context)
     
-
+    
 
 def pergunta(request, id):
     evento_id = Evento.objects.get(id=id)

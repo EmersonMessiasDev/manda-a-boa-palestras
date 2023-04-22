@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Evento, Palestrante, Pergunta
 from datetime import datetime
 import qrcode
 from django.core.files.images import ImageFile
+from django.contrib.messages import constants
+from django.contrib import messages
 
 data_atual = datetime.now()
 data_formatada = data_atual.strftime('%Y-%m-%d')
@@ -13,12 +15,35 @@ def home(request):
     return render(request, 'evento/index.html')
 
 
-def eventos(request):
-    evento = Evento.objects.filter(data=data_formatada)
+def eventos(request):  
+    return render(request, 'evento/eventos.html')
+
+
+def validar_pin(request):
+    pin = request.POST.get('pin')
+    evento = Evento.objects.filter(pin=pin)
+    data_evento = Evento.objects.get(pin=pin)
+    data = data_evento.data.strftime('%Y-%m-%d')
+        
+    if not pin:
+        messages.add_message(request, constants.ERROR, 'Insira o pin e clique em ACESSAR!')
+        
+    elif len(evento) == 0:
+        print('não tem evento')
+        messages.add_message(request, constants.ERROR, 'PIN invalido!')
+        
+    elif data != data_formatada:
+        messages.add_message(request, constants.ERROR, 'Esse evento acabou!')
+        
+    elif data == data_formatada:
+        return  redirect('evento:pergunta', id=data_evento.id)
+
+        
     
-    context = {'eventos':evento}
-    
-    return render(request, 'evento/eventos.html', context)
+        
+    return render(request, 'evento/eventos.html')
+
+
 
 
 def qrCorde(request, id):

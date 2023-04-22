@@ -33,7 +33,7 @@
         <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
     </p>
     <h3>Faça sua pergunta</h3>
-    <form action="{% url 'evento:faz_pergunta' evento.id %}" method="POST">
+    <form action="{% url 'evento:faz_pergunta' evento.id %}" method="POST" class='form-pergunta'>
         {% csrf_token %}
         <input type="text" id="user" name="nome" placeholder="Digite seu nome">
         <br>

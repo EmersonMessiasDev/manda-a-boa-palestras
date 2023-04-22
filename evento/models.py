@@ -1,3 +1,5 @@
+from random import randint
+import uuid
 from django.db import models
 import qrcode
 from django.core.files.images import ImageFile
@@ -6,19 +8,27 @@ from PIL import Image, ImageDraw
 from io import BytesIO
     
 class Evento(models.Model):
+    id = models.AutoField(primary_key=True) 
     nome = models.CharField(max_length=255, blank=False, null=False)
     data = models.DateField(null=False)
     local = models.CharField(max_length=255)
     qrCode = models.ImageField(upload_to='qr_codes',blank=True, null=True)
-    pin = models.CharField(max_length=10, blank=True, null=True)
+    pin = models.CharField(max_length=5, unique=True)
            
     def __str__(self) -> str:
         return self.nome
     
-    
+   
     def save(self, *args, **kwargs):
+        if not self.id:
+            super().save(*args, **kwargs)
+        if not self.pin:
+            pin = randint(10000, 99999)
+            self.pin = f'{pin:05d}'
+            # Se o ID ainda não foi definido, salve o modelo para que o ID seja gerado pelo banco de dados.
+            super().save(*args, **kwargs)
         # Define os dados para o QR code
-        data = f'http://127.0.0.1:8000/faz_pergunta/{self.pk}'
+        data = f'http://127.0.0.1:8000/faz_pergunta/{self.id}'
 
         # Cria o QR code
         qr = qrcode.QRCode(version=1, box_size=10, border=5)

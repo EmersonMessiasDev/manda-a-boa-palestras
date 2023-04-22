@@ -28,14 +28,18 @@
     <p class="text-center">
         <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
     </p>
-      <form action="" method="POST">
+      <form action="{% url 'evento:validar_pin' %}" method="POST">
           {% csrf_token %}
-          <input type="text" id="user" name="nome" placeholder="PIN do evento">
+          <input type="text" id="user" name="pin" placeholder="PIN do evento">
           <br>
           <button type="submit" class="login-button">ACESSAR</button>
+          
+
+
       </form>
       
   </div>
+
 </div>
   <div class="col-sm-12 col-md-12 mx-auto text-center linkedin sticky-footer" style="position: absolute; bottom: 0" >
       <a href="https://www.linkedin.com/in/emerson-messias/" target="_blank" style="color: white;">

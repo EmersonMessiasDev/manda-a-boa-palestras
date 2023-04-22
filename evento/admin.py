@@ -12,6 +12,7 @@ class PerguntaEmLinha(admin.StackedInline):
 
 class EventoAdmin(admin.ModelAdmin):
     inlines = [PalestrantesEmLinha, PerguntaEmLinha]
+    readonly_fields = ['pin']
 
 
 admin.site.register(Evento, EventoAdmin)

@@ -14,17 +14,13 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
-
-
-.modal-backdrop.in {
-    filter: alpha(opacity=50);
-    opacity: .5;
-    z-index: -1;
+.form-pergunta{
+	z-index: 9999 !important;
 }
 #login-panel, #signup-panel {
 	position: absolute;
-	width: 700px;
-	top: 40%;
+	width: 600px;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
@@ -99,7 +95,6 @@ input:focus {
 	border: none;
 	background-color: #1297E0;
 	color: white;
-	width: 800%;
   height: 5rem;
 	margin-top: 5px;
 	border-bottom: 2px solid #0267A0;
@@ -129,14 +124,12 @@ label a {
 	label {
 		width: 80%;
 	}
+
 }
 
 @media screen and (max-width: 450px) {
 	img {
     margin-left: -9rem;
-	}
-	.nav-logo{
-		margin-left: 5rem;
 	}
 	body {
 		background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
@@ -145,29 +138,21 @@ label a {
 		background-position: center;
 		display: flex;
 		justify-content: center;
-		height: 101.5vh;
+		height: 104.5vh;
 		overflow-x: hidden;
 	  }
-}
-
-
-
-.modal.fade .modal-dialog {
-	top: 50px;
-  }
-
-  .modal-content {
-	padding-top: 50px;
-  }
-
-  .modal-dialog {
-	margin-top: 100px;
-  }
-
-  main  {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+	  .section-1 .imagem-nav {
+		margin-left: 10rem;
+		align-items: center;
+	}
+	.QR-CODE-MOBILE{
+		margin-left: 7rem;
+		
+	}
+	.mandaboa{
+		margin-left: 2rem;
+		margin-top: 5rem;
+	}
 }
 .section-1 {
     width: 100%;
@@ -232,104 +217,24 @@ label a {
     width: 100%;
 }
 
-#toast {
-    visibility: hidden;
-    max-width: 50px;
-    height: 50px;
-    margin-left: -125px;
-    margin: auto;
-    background-color: #e30000;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
 
-    position:fixed;
-  	z-index: 9999;
-    left: 0;right:0;
-    bottom: 30px;
-    font-size: 17px;
-    white-space: nowrap;
-}
-#toast #img{
-	z-index: 9999 !important;
-	width: 50px;
-	height: 50px;
-    
-    float: left;
-    
-    padding-top: 16px;
-    padding-bottom: 16px;
-    
-    box-sizing: border-box;
-
-    
-    background-color: #111;
-    color: #fff;
-}
-#toast #desc{
-
-    
-    color: #fff;
-   
-    padding: 16px;
-    
-    overflow: hidden;
-	white-space: nowrap;
-	z-index: 9999 !important;
+/* Estilos para telas com zoom de 70% */
+@media (max-width: 767px) and (max-resolution: 77dpi) {
+  /* Estilos para telas com zoom de 70% aqui */
 }
 
-#toast.show {
-	z-index: 9999 !important;
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+/* Estilos para telas com zoom de 80% */
+@media (max-width: 767px) and (max-resolution: 96dpi) {
+  /* Estilos para telas com zoom de 80% aqui */
 }
 
-@-webkit-keyframes fadein {
-	
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
+/* Estilos para telas com zoom de 90% */
+@media (max-width: 767px) and (max-resolution: 108dpi) {
+  /* Estilos para telas com zoom de 90% aqui */
 }
 
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+/* Estilos para telas com zoom de 100% */
+@media (max-width: 767px) and (max-resolution: 120dpi) {
+  /* Estilos para telas com zoom de 100% aqui */
 }
 
-@-webkit-keyframes expand {
-    from {min-width: 80px} 
-    to {min-width: 470px}
-}
-
-@keyframes expand {
-    from {min-width: 80px}
-    to {min-width: 470px}
-}
-@-webkit-keyframes stay {
-    from {min-width: 470px} 
-    to {min-width: 470px}
-}
-
-@keyframes stay {
-    from {min-width: 470px}
-    to {min-width: 470px}
-}
-@-webkit-keyframes shrink {
-    from {min-width: 470px;} 
-    to {min-width: 80px;}
-}
-
-@keyframes shrink {
-    from {min-width: 470px;} 
-    to {min-width: 70px;}
-}
-
-@-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 60px; opacity: 0;}
-}
-
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 60px; opacity: 0;}
-}

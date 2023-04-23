@@ -43,18 +43,19 @@
         <p>Não tem uma conta? <a href="#" id="signup-link">Cadastre-se</a></p>
     </form>
 
-    <form action="" method="POST" class='form-cadastro' style="display:none;">
+    <form action="{% url 'usuario:cadastro' %}" method="POST" class='form-cadastro' style="display:none;">
         {% csrf_token %}
-        <input type="text" id="username" name="username" placeholder="Digite seu nome">
+        <input type="text" id="yourUsername" name="username" placeholder="Digite seu nome de usuario">
         <br>
         <br>
-        <input type="email" id="email" name="email" placeholder="Digite seu email">
+        <input type="email" id="yourEmail" name="email" placeholder="Digite seu email">
         <br>
         <br>
-        <input type="text" id="password" name="senha" placeholder="Digite sua senha">
+        <input type="password" id="password" name="senha" placeholder="Digite sua senha">
+        <small>Pelo menos 8 caracteres seguindo o ex.: "Senha@123"</small>
         <br>
         <br>
-        <input type="text" id="password" name="confirmar-senha" placeholder="Confirmw sua senha">
+        <input type="password" id="password" name="confirmar-senha" placeholder="Confirme sua senha">
         <hr>
         <button type="submit" class="login-button">Cadastrar</button>
         <p>Já tem uma conta? <a href="#" id="login-link">Faça login</a></p>
@@ -78,5 +79,28 @@
             signupForm.style.display = 'block';
         });
     </script>
+    <script>
+        var form = document.querySelector("#cadastro-form")
+        form.addEventListener("submit", function(event) {
+          event.preventDefault();
+          //get the value of inputs
+          var yourUsername = document.getElementById("yourUsername").value;
+          var yourEmail = document.getElementById("yourEmail").value;
+          // store the values in localStorage
+          localStorage.setItem("yourUsername", yourUsername);
+          localStorage.setItem("yourEmail", yourEmail);
+          // send the form to server
+          form.submit();
+        });
+      
+        // check if there are any stored values in localStorage
+        if(localStorage.getItem("yourUsername")) {
+          // set the values to the input fields
+          document.getElementById("yourUsername").value = localStorage.getItem("yourUsername");
+          document.getElementById("yourEmail").value = localStorage.getItem("yourEmail");
+        }
+      
+      
+      </script>
 </div>
 {% endblock %}

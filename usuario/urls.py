@@ -6,4 +6,8 @@ app_name = 'usuario'
 
 urlpatterns = [
     path('area_palestrante/', area_palestrante, name='area_palestrante'),
+    path('cadastro/', cadastro, name='cadastro'), 
+    path('validar_login/', validar_login, name='validar_login'),
+    
+
 ]

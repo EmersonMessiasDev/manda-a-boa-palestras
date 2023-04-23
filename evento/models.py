@@ -6,9 +6,11 @@ from django.core.files.images import ImageFile
 from django.core.files import File
 from PIL import Image, ImageDraw
 from io import BytesIO
+from usuario.models import Usuario
     
 class Evento(models.Model):
     id = models.AutoField(primary_key=True) 
+    responsavel = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nome = models.CharField(max_length=255, blank=False, null=False)
     data = models.DateField(null=False)
     local = models.CharField(max_length=255)

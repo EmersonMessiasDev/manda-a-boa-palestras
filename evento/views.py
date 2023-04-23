@@ -15,8 +15,12 @@ def home(request):
     return render(request, 'evento/index.html')
 
 
+
+
+
 def eventos(request):  
     return render(request, 'evento/eventos.html')
+
 
 
 def validar_pin(request):
@@ -48,6 +52,7 @@ def validar_pin(request):
     return render(request, 'evento/eventos.html')
 
 
+
 def qrCorde(request, id):
     evento_id = Evento.objects.get(id=id)
     
@@ -55,6 +60,7 @@ def qrCorde(request, id):
                }
     
     return render(request, 'evento/qrCode.html', context)
+
 
 
 def faz_pergunta(request, id):
@@ -93,6 +99,7 @@ def pergunta(request, id):
                'palestrante':palestrante}
 
     return render(request, 'evento/pergunta.html', context)
+
 
 
 def chat(request, id):

@@ -7,6 +7,8 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("evento.urls", namespace="evento")),
+    path('area_palestrante/', include("usuario.urls", namespace='usuario')),
+
 
 
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),

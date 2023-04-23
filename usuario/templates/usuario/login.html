@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/login.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+<section class="section-1">
+    <div class="section-1-main">
+        <nav>
+          <div class="container imagem-nav">
+            <a href="{% url 'evento:home'%}">
+            <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
+        </a>
+            <h4 class="d-inline" style="color: white;">{{evento.nome}}</h4>
+        </div>
+            <div class="nav-links">
+              <ul>
+                  {% comment %} <li><a href="#">Entrar</a></li> {% endcomment %}
+                  {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
+              </ul>
+          </div>
+            
+            <div class="nav-mobile-menu-btn">
+                
+                <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
+            </div>
+        </nav>
+  </section>
+<div id="login-panel">
+    <p class="text-center">
+        <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
+    </p>
+    <form action="" method="POST" class='form-pergunta'>
+        {% csrf_token %}
+        <input type="email" id="user" name="email" placeholder="Digite seu email">
+        <br>
+        <br>
+        <input type="text" id="password" name="password" placeholder="Digite sua senha">
+        <hr>
+        <button type="submit" class="login-button">Entrar</button>
+        <p>Não tem uma conta? <a href="#" id="signup-link">Cadastre-se</a></p>
+    </form>
+
+    <form action="" method="POST" class='form-cadastro' style="display:none;">
+        {% csrf_token %}
+        <input type="text" id="username" name="username" placeholder="Digite seu nome">
+        <br>
+        <br>
+        <input type="email" id="email" name="email" placeholder="Digite seu email">
+        <br>
+        <br>
+        <input type="text" id="password" name="senha" placeholder="Digite sua senha">
+        <br>
+        <br>
+        <input type="text" id="password" name="confirmar-senha" placeholder="Confirmw sua senha">
+        <hr>
+        <button type="submit" class="login-button">Cadastrar</button>
+        <p>Já tem uma conta? <a href="#" id="login-link">Faça login</a></p>
+    </form>
+    
+    <script>
+        const loginForm = document.querySelector('.form-pergunta');
+        const signupForm = document.querySelector('.form-cadastro');
+        const loginLink = document.querySelector('#login-link');
+        const signupLink = document.querySelector('#signup-link');
+        
+        loginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+        });
+        
+        signupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+        });
+    </script>
+</div>
+{% endblock %}

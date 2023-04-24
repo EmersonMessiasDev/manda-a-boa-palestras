@@ -4,12 +4,30 @@ from django.contrib import messages
 from django.contrib.messages import constants
 from hashlib import sha256
 from .models import Usuario
+from evento.models import *
 
 # Create your views here.
 
-def area_palestrante(request):
+def area_palestrante(request):    
     return render(request, 'usuario/login.html')
 
+def admin_palestrante(request):
+    if request.session.get('usuario'):  
+        request_usuario = Usuario.objects.get(id=request.session['usuario'])
+        eventos = Evento.objects.filter(responsavel=request_usuario)
+             
+        context = {
+            'evento':eventos
+        }
+        
+        return render(request, 'usuario/admin_palestrante.html', context)
+    else:
+        messages.add_message(request, constants.ERROR, 'Usuário não está logado')
+        return redirect('usuario:area_palestrante')
+        
+        
+        
+        
 def cadastro(request):
     if request.method == "POST":
         usuario = request.POST.get('username')
@@ -31,9 +49,28 @@ def cadastro(request):
             return redirect('usuario:area_palestrante')
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema solicite ajuda ao suporte!')
+            return redirect('usuario:area_palestrante')
 
             
  
 def validar_login(request):
-    pass      
-        
+    email = request.POST.get('email')
+    senha = request.POST.get('senha')
+    senha = sha256(senha.encode()).hexdigest()
+    usuario = Usuario.objects.filter(email = email).filter(senha = senha)
+    
+    if len(usuario) == 0:
+        messages.add_message(request, constants.ERROR, 'Email ou senha invalidos!')
+        return redirect('usuario:area_palestrante')
+    
+    elif len(usuario) > 0:      
+        messages.add_message(request, constants.SUCCESS, 'Usuario logado com sucesso!')
+        request.session['usuario'] = usuario[0].id
+        return redirect('usuario:admin_palestrante')
+
+
+
+def sair(request):
+    messages.add_message(request, constants.SUCCESS, 'Você saiu do portal!')
+    request.session.flush()
+    return redirect('/')

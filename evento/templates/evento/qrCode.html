@@ -18,6 +18,7 @@
             <ul>
                 {% comment %} <li><a href="#">Entrar</a></li> {% endcomment %}
                 {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
+                <li><a href="{% url 'usuario:admin_palestrante' %}" class="btn btn-primary product-link">Admin</a></li>
                 <li><a href="{% url 'evento:chat' evento.id %}" class="btn btn-info product-link">Chat palestra</a></li>
             </ul>
         </div>

@@ -32,12 +32,12 @@
     <p class="text-center">
         <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
     </p>
-    <form action="" method="POST" class='form-pergunta'>
+    <form action="{% url 'usuario:validar_login' %}" method="POST" class='form-pergunta'>
         {% csrf_token %}
         <input type="email" id="user" name="email" placeholder="Digite seu email">
         <br>
         <br>
-        <input type="text" id="password" name="password" placeholder="Digite sua senha">
+        <input type="password" id="password" name="senha" placeholder="Digite sua senha">
         <hr>
         <button type="submit" class="login-button">Entrar</button>
         <p>Não tem uma conta? <a href="#" id="signup-link">Cadastre-se</a></p>

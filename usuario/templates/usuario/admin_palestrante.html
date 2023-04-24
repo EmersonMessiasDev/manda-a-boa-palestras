@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<head>
+  <title>Área Admin</title>
+  <link href="{% static 'evento/css/admin.css' %}" rel="stylesheet" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#" style="color: white;"><img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="50" width="50"> Área admin </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav" >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: white;" >Editar perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'usuario:sair' %}" style="color: white;">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-3" style="color: white;">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Meus eventos</h2>
+      </div>
+      <div class="col-md-6 text-right">
+        <a data-toggle="modal" data-target="#novoEvento" class="btn btn-primary">Novo evento</a>
+      </div>
+    </div>
+    <div class="table-responsive" style="height: 300px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);">
+    <table class="table mt-3" style="overflow-y: scroll;">
+      <thead  style="position: sticky; top: 0;" class="thead">
+        <tr>
+          <th>Nome do evento</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Alterar evento</th>
+          <th>Acessar evento</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for evento in evento %}
+        <tr>
+          <td>{{evento.nome}}</td>
+          <td>{{evento.data}}</td>
+          <td  class="align-middle" ><span class="badge badge-success text-center">Ativo</span></td>
+          <td><a href="#" class="btn btn-primary">Editar</a> / <a href="#" class="btn btn-danger">Excluir</a></td>
+          <td><a href="{% url 'evento:qrcode' evento.id %}" class="btn btn-success">Acessar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+
+    <div class="mt-5">
+      <h2>Esta com duvdida como usar o MANDA A BOA!?</h2>
+      <p>Aqui você pode ver um breve tutorial explicando tudo.</p>
+    </div>
+
+  </div>
+
+  <footer class=" text-white text-center p-3 mt-5">
+    Desenvolvido por Emerson <a href="https://www.linkedin.com/in/emerson/" target="_blank"><i class="fab fa-linkedin ml-2"></i></a>
+  </footer>
+
+
+
+
+  {% comment %} MODAL EVENTO {% endcomment %}
+  <div class="modal fade" id="novoEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title-1" id="exampleModalLabel" style="color: black;">Novo Evento</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="" method="POST">{% csrf_token %}
+         <div class="modal-body" style="color: white;">
+             <div class="form-group " >
+           <h5 class="modal-title-1" id="exampleModalLabel" >Tecnologias usadas.</h5>
+           <div class="form-group">
+             <label >Tema do Evento:</label>
+             <input type="text" name="tecFront" class="form-control" id="email1" value="{{projeto.tecFront}}" aria-describedby="emailHelp" placeholder="Digite o nome do evento.">
+           </div>
+           <div class="form-group">
+             <label>Data:</label>
+             <input type="date" name="tecBack" class="form-control" id="email1" value="{{projeto.tecBack}}" aria-describedby="emailHelp" placeholder="Ex.: Python, django">
+           </div>
+           <div class="form-group">
+             <label >Local do evento:</label>
+             <input type="text" name="tecBanco" class="form-control" id="email1" value="{{projeto.tecBanco}}" aria-describedby="emailHelp" placeholder="">
+           </div>
+           <label >Obs: Após criar o evento será gerado automaticamente o QrCode e o Pin do evento.</label>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Criar Evento</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+    alertify.set('notifier','position', 'top-right');
+    {% for message in messages %}
+        var msg = alertify.notify('{{message}}');
+        msg.delay(6)
+    {% endfor %}
+</script>
+</html>

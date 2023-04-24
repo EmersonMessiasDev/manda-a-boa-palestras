@@ -6,9 +6,10 @@ from django.core.files.images import ImageFile
 from django.contrib.messages import constants
 from django.contrib import messages
 import re
+from django_ajax.decorators import ajax
 from better_profanity import profanity 
 from .palavrasOf import lista_negra
-
+from django.http import Http404, JsonResponse
 
 data_atual = datetime.now()
 data_formatada = data_atual.strftime('%Y-%m-%d')
@@ -92,6 +93,7 @@ def faz_pergunta(request, id):
 
     pergunta.save()
     
+    
     context = {'evento':evento_id,
                'palestrante':palestrante}
     
@@ -107,7 +109,6 @@ def pergunta(request, id):
                'palestrante':palestrante}
 
     return render(request, 'evento/pergunta.html', context)
-
 
 
 def chat(request, id):

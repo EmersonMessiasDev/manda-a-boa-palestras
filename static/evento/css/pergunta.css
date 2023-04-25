@@ -129,8 +129,12 @@ label a {
 }
 
 @media screen and (max-width: 450px) {
+
+	.section-1 .section-1-main nav img {
+		margin-left: -14rem;
+	}
 	img {
-    margin-left: -9rem;
+    margin-left: -4rem;
 	}
 	body {
 		background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);

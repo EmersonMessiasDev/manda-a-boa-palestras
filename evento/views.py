@@ -18,9 +18,10 @@ data_formatada = data_atual.strftime('%Y-%m-%d')
 # Create your views here.
 
 def home(request):
+    if request.session.get('usuario'): 
+        return redirect('usuario:admin_palestrante')
+    
     return render(request, 'evento/index.html')
-
-
 
 
 

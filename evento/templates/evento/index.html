@@ -18,7 +18,7 @@
         <div class="section-1-main">
             <nav>
                 <div class="nav-logo">
-                    <a href="index.html"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="100"></a>
+                    <a href="{% url 'evento:home' %}"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="100"></a>
                 </div>
                 <div class="nav-links">
                     <ul>
@@ -29,8 +29,7 @@
                 
                 <div class="nav-mobile-menu-btn">
                     
-                    <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
-                </div>
+                    <a href="{% url 'usuario:area_palestrante' %}" class="product-link">Area <span>Palestrante</span></a>                </div>
             </nav>
             <div class="section-content">
                 <h1 class="section-1-title" style="color: white;">Palestra mais dinamica?</h1>

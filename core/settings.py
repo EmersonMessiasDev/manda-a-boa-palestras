@@ -15,9 +15,9 @@ SECRET_KEY = 'django-insecure-^sj)0#y^2@!!8j*7k#ysdbz3@lgdi-n&u!5govy!rwpht4==*m
 # DEBUG = True
 
 # ALLOWED_HOSTS = []
-
+DEBUG = False
 ALLOWED_HOSTS = ['177.131.140.87', 'localhost', '127.0.0.1','https://mandaboa.tech/','https://okgjto.conteige.cloud/','*']
-# CSRF_TRUSTED_ORIGINS = ['https://*.conteige.cloud/', 'https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.conteige.cloud/', 'https://*.127.0.0.1']
 
 
 # Application definition
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -143,6 +145,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 3000000
 
 # Messages
 from django.contrib.messages import constants
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MESSAGE_TAGS = {
     constants.DEBUG: 'alert-primary',

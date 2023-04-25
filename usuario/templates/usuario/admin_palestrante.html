@@ -47,6 +47,7 @@
           <th>Status</th>
           <th>Alterar evento</th>
           <th>Acessar evento</th>
+          <th>Relatório</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +58,7 @@
           <td  class="align-middle" ><span class="badge badge-success text-center">Ativo</span></td>
           <td><a href="#" class="btn btn-primary">Editar</a> / <a href="#" class="btn btn-danger">Excluir</a></td>
           <td><a href="{% url 'evento:qrcode' evento.id %}" class="btn btn-success">Acessar</a></td>
+          <td><a href="{% url 'usuario:relatorio' evento.id %}" class="btn btn-info">Conferir</a></td>
         </tr>
         {% endfor %}
       </tbody>
@@ -73,9 +75,6 @@
   <footer class=" text-white text-center p-3 mt-5">
     Desenvolvido por Emerson <a href="https://www.linkedin.com/in/emerson/" target="_blank"><i class="fab fa-linkedin ml-2"></i></a>
   </footer>
-
-
-
 
   {% comment %} MODAL EVENTO {% endcomment %}
   <div class="modal fade" id="novoEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

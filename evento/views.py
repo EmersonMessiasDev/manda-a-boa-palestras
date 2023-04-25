@@ -6,10 +6,11 @@ from django.core.files.images import ImageFile
 from django.contrib.messages import constants
 from django.contrib import messages
 import re
-from django_ajax.decorators import ajax
+#! from django_ajax.decorators import ajax
 from better_profanity import profanity 
 from .palavrasOf import lista_negra
 from django.http import Http404, JsonResponse
+
 
 data_atual = datetime.now()
 data_formatada = data_atual.strftime('%Y-%m-%d')
@@ -74,13 +75,15 @@ def faz_pergunta(request, id):
     nome = request.POST.get('nome')
     nome_palestrante = request.POST.get('palestrante')
     
+
+    
     
     #! Tratamento de palavras ofensivas
     pergunta = request.POST.get('pergunta')
-    profanity.add_censor_words(lista_negra)
-    if(profanity.contains_profanity(pergunta)): 
-        messages.add_message(request, constants.SUCCESS, f'ERRO!foi identificada palavras ofencisva na sua pergunta! se persistir você sera bloqueado!')
-        return redirect('evento:pergunta', id=evento_id.id)
+    # profanity.add_censor_words(lista_negra)
+    # if(profanity.contains_profanity(pergunta)): 
+    #     messages.add_message(request, constants.SUCCESS, f'ERRO!foi identificada palavras ofencisva na sua pergunta! se persistir você sera bloqueado!')
+    #     return redirect('evento:pergunta', id=evento_id.id)
 
     
     pergunta = Pergunta.objects.create(

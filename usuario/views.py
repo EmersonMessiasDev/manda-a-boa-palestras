@@ -1,4 +1,8 @@
+import base64
 from django.shortcuts import render, redirect
+import numpy as np
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 from .utils import password_is_valid
 from django.contrib import messages
 from django.contrib.messages import constants
@@ -67,6 +71,39 @@ def validar_login(request):
         messages.add_message(request, constants.SUCCESS, 'Usuario logado com sucesso!')
         request.session['usuario'] = usuario[0].id
         return redirect('usuario:admin_palestrante')
+
+
+def relatorio(request, id):
+    if request.session.get('usuario'): 
+        request_usuario = Usuario.objects.get(id=request.session['usuario'])
+        eventos = Evento.objects.filter(responsavel=request_usuario)
+        eventos = eventos.get(id=id)
+        relatorio_perguntas = Pergunta.objects.filter(evento_id=eventos)
+        # Converte os dados em uma string 
+        text = " ".join([c.pegunta for c in relatorio_perguntas])
+        image_mask = np.array(Image.open('templates/static/evento/img/Nuvem.png'))
+        # Cria a nuvem de palavras
+        wordcloud = WordCloud(width=800, height=800, 
+                        background_color='#ffffff00',  
+                        mask = image_mask,
+                        colormap='Wistia',
+                        stopwords=None,
+                        mode='RGBA',
+                        min_font_size = 10).generate(text) 
+
+        # Convert the image data to a data URI
+        buffer = BytesIO()
+        wordcloud.to_image().save(buffer, format='PNG')
+        image_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
+        data_uri = 'data:image/png;base64,' + image_data
+
+        # Pass the data URI to the template context
+        context = {
+            'wordcloud_data_uri': data_uri,
+        }
+
+        return render(request, 'usuario/relatorio.html', context)
+
 
 
 

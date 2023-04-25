@@ -42,10 +42,11 @@
                     <img src="{% static 'evento/img/logo-dialogo.png' %}" alt="User" class="mr-2">
                     <h6><strong>{{chat.nome}}</strong></h6>
                 </div>
+                <h5>Para: <strong>{{chat.palestrante}}</strong></h5>
                 <div class="msg-body alert alert-primary">
                     {{chat.pegunta}}. 
                 </div>
-                <h5>Pergunta para: <strong>{{chat.palestrante}}</strong></h5>
+                <td><a href="" class="btn btn-info" disabled>Responder</a></td>
             </div>
             {% endfor %}
         </div>

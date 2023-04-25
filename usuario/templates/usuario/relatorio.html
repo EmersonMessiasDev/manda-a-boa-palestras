@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link href="{% static 'evento/css/pergunta.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'conteudo' %}
+<section class="section-1">
+  <div class="section-1-main">
+      <nav>
+        <div class="container imagem-nav">
+          <a href="{% url 'evento:home'%}">
+            <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
+            </a>
+      </div>
+          <div class="nav-links">
+            <ul>
+                {% comment %} <li><a href="#">Entrar</a></li> {% endcomment %}
+                {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
+                <li><a href="{% url 'usuario:admin_palestrante' %}" class="btn btn-primary product-link">Admin</a></li>
+                {% comment %} <li><a href="{% url 'evento:chat' evento.id %}" class="btn btn-info product-link">Chat palestra</a></li> {% endcomment %}
+            </ul>
+        </div>
+          
+          <div class="nav-mobile-menu-btn">
+              
+              <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
+          </div>
+      </nav>
+</section>
+<div id="login-panel" class="d-flex flex-column align-items-center ">
+    <img class='mandaboa' src="{% static 'evento/img/mandaAboa.png' %}" height="300" width="424" />
+    <h3>mandaboa.tech/eventos </h3>
+    <h2>PIN DO EVENTO: {{evento.pin}}</h2>
+    <form class="d-flex flex-column align-items-center QR-CODE-MOBILE">
+      <img src="{{ wordcloud_data_uri }}" alt="Wordcloud" >
+        </form>
+    <br><br>
+
+  </div>
+  <div class="col-sm-12 col-md-12 mx-auto text-center linkedin sticky-footer" style="position: absolute; bottom: 0" >
+    <a href="https://www.linkedin.com/in/emerson-messias/" target="_blank" style="color: white;">
+       Desenvolvido por: <i class="bi bi-linkedin"></i> <strong >Emerson Messias</strong> <br><br>
+    </a>
+  </div>
+{% endblock %}

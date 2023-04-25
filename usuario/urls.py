@@ -9,6 +9,7 @@ urlpatterns = [
     path('cadastro/', cadastro, name='cadastro'), 
     path('validar_login/', validar_login, name='validar_login'),
     path('admin_palestrante/', admin_palestrante, name='admin_palestrante'),
+    path('relatorio/<int:id>', relatorio, name='relatorio'),
     path('sair/', sair, name="sair")
     
 ]

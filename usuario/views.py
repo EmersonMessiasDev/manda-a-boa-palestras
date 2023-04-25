@@ -3,23 +3,25 @@ from django.shortcuts import render, redirect
 import numpy as np
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-from .utils import password_is_valid
+from .utils import *
 from django.contrib import messages
 from django.contrib.messages import constants
 from hashlib import sha256
 from .models import Usuario
 from evento.models import *
+from nltk.corpus import stopwords
+import nltk
 
 # Create your views here.
 
-def area_palestrante(request):    
+def area_palestrante(request):
     return render(request, 'usuario/login.html')
 
 def admin_palestrante(request):
     if request.session.get('usuario'):  
         request_usuario = Usuario.objects.get(id=request.session['usuario'])
         eventos = Evento.objects.filter(responsavel=request_usuario)
-             
+        nltk.download('stopwords')       
         context = {
             'evento':eventos
         }
@@ -79,6 +81,9 @@ def relatorio(request, id):
         eventos = Evento.objects.filter(responsavel=request_usuario)
         eventos = eventos.get(id=id)
         relatorio_perguntas = Pergunta.objects.filter(evento_id=eventos)
+        stop_words = set(stopwords.words('portuguese'))
+        stop_words.update(desnecessarias)
+
         # Converte os dados em uma string 
         text = " ".join([c.pegunta for c in relatorio_perguntas])
         image_mask = np.array(Image.open('templates/static/evento/img/Nuvem.png'))
@@ -87,7 +92,7 @@ def relatorio(request, id):
                         background_color='#ffffff00',  
                         mask = image_mask,
                         colormap='Wistia',
-                        stopwords=None,
+                        stopwords=stop_words,
                         mode='RGBA',
                         min_font_size = 10).generate(text) 
 

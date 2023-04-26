@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+}
+body {
+  background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+  width: 100% !important;
+  background-repeat: no-repeat ;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed ;
+
+}
+

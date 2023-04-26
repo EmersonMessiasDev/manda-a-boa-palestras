@@ -19,7 +19,11 @@ body {
     margin-left: 8rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
 }
-
+.img-fluid {
+  height: auto;
+  max-width: 15rem !important;
+  margin-top: -1rem !important;
+}
 
 @media screen and (max-width: 450px) {
 

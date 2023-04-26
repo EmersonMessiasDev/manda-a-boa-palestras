@@ -56,15 +56,14 @@ html, body {
 }
 /* Styles for chat container */
 .chat-container {
-    max-height: 60rem;
+    max-height: 50rem;
     overflow-y: scroll;
-    height: 500rem
 }
 
 .row {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
-    height: 75rem;
+    height: 50rem;
     display: flex;
     flex-wrap: wrap;
     margin-top: calc(var(--bs-gutter-y) * -1);
@@ -144,6 +143,9 @@ html, body {
     width: 100%;
 }
 
+@media screen and (max-width: 450px) {
+
+}
 /* Estilos para telas com zoom de 70% */
 @media (max-width: 767px) and (max-resolution: 77dpi) {
   /* Estilos para telas com zoom de 70% aqui */

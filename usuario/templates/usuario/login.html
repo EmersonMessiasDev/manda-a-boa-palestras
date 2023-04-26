@@ -1,105 +1,121 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% load static %}
 
-{% block 'head' %}
+{% block 'css' %}
 <link href="{% static 'evento/css/login.css' %}" rel="stylesheet" >
 {% endblock %}
 
-{% block 'conteudo' %}
-<section class="section-1">
-    <div class="section-1-main">
-        <nav>
-          <div class="container imagem-nav">
-            <a href="{% url 'evento:home'%}">
-            <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
-        </a>
-            <h4 class="d-inline" style="color: white;">{{evento.nome}}</h4>
-        </div>
-                <div class="nav-links">
-                    <ul>
-                        <li><a href="{% url 'evento:home' %}">INICIO</a></li>
-                    </ul>
-                </div>
-            
-            <div class="nav-mobile-menu-btn">
-                
-                <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
-            </div>
-        </nav>
-  </section>
-<div id="login-panel">
-    <p class="text-center">
-        <img src="{% static 'evento/img/mandaAboa.png' %}" height="380" width="424" />
-    </p>
-    <form action="{% url 'usuario:validar_login' %}" method="POST" class='form-pergunta'>
-        {% csrf_token %}
-        <input type="email" id="user" name="email" placeholder="Digite seu email">
-        <br>
-        <br>
-        <input type="password" id="password" name="senha" placeholder="Digite sua senha">
-        <hr>
-        <button type="submit" class="login-button">Entrar</button>
-        <p>Não tem uma conta? <a href="#" id="signup-link">Cadastre-se</a></p>
-    </form>
+{% block 'navBar' %}
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light ">
+		<div class="container">
+            <a href="{% url 'evento:home' %}"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="70"></a>
+            <p style="color: white;">MANDA A BOA!</p>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon" ></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav" >
+				<ul class="navbar-nav ml-auto" style="color: white;">
+					<li class="nav-item active">
+						<a class="nav-link" href="#" style="color: white;">Menu 1</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" style="color: white;">Menu 2</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" style="color: white;">Menu 3</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+{% endblock %}
 
-    <form action="{% url 'usuario:cadastro' %}" method="POST" class='form-cadastro' style="display:none;">
-        {% csrf_token %}
-        <input type="text" id="yourUsername" name="username" placeholder="Digite seu nome de usuario">
-        <br>
-        <br>
-        <input type="email" id="yourEmail" name="email" placeholder="Digite seu email">
-        <br>
-        <br>
-        <input type="password" id="password" name="senha" placeholder="Digite sua senha">
-        <small>Pelo menos 8 caracteres seguindo o ex.: "Senha@123"</small>
-        <br>
-        <br>
-        <input type="password" id="password" name="confirmar-senha" placeholder="Confirme sua senha">
-        <hr>
-        <button type="submit" class="login-button">Cadastrar</button>
-        <p>Já tem uma conta? <a href="#" id="login-link">Faça login</a></p>
-    </form>
+{% block 'conteudo' %}
+	<!-- Conteúdo principal -->
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<img src="{% static 'evento/img/mandaAboa.png' %}" height="280" width="324" class="img-fluid">
+			</div>
+		</div>
+
+		<div class="row mt-4 text-center">
+			<div class="col-md-6 offset-md-3 center">
+                <form action="{% url 'usuario:validar_login' %}" method="POST" class="form-group form-pin form-pergunta">
+                    {% csrf_token %}
+                    <input type="email" id="user" name="email" placeholder="Digite seu email"  class="form-control">
+                    <br>
+                    <input type="password" id="password" name="senha" placeholder="Digite sua senha"  class="form-control" >
+                    <br>
+                    <button type="submit" class="form-control btn-primary">Entrar</button>
+                    <p>Não tem uma conta? <a href="#" id="signup-link">Cadastre-se</a></p>
+
+                </form>
+
+                <form action="{% url 'usuario:cadastro' %}" method="POST" class="form-group form-pin form-cadastro" style="display:none;">
+                    {% csrf_token %}
+                    <input type="text" id="yourUsername" name="username" placeholder="Digite seu nome de usuario" class="form-control">
+                    <br>
+                    <input type="email" id="yourEmail" name="email" placeholder="Digite seu email"  class="form-control" >
+                    <br>
+                    <input type="password" id="password" name="senha" placeholder="Digite sua senha"  class="form-control" >
+                    <br>                    
+                    <input type="password" id="password" name="confirmar-senha" placeholder="Confirme sua senha"  class="form-control" >
+                    <br>
+                    <button type="submit" class="form-control btn-primary">Cadastrar</button>
+                    <p>Já tem uma conta? <a href="#" id="login-link">Faça login</a></p>
+
+                </form>
+                <br>
+                <br>
+                <br>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block 'js' %}
+<script>
+    const loginForm = document.querySelector('.form-pergunta');
+    const signupForm = document.querySelector('.form-cadastro');
+    const loginLink = document.querySelector('#login-link');
+    const signupLink = document.querySelector('#signup-link');
     
-    <script>
-        const loginForm = document.querySelector('.form-pergunta');
-        const signupForm = document.querySelector('.form-cadastro');
-        const loginLink = document.querySelector('#login-link');
-        const signupLink = document.querySelector('#signup-link');
-        
-        loginLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginForm.style.display = 'block';
-            signupForm.style.display = 'none';
-        });
-        
-        signupLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginForm.style.display = 'none';
-            signupForm.style.display = 'block';
-        });
-    </script>
-    <script>
-        var form = document.querySelector("#cadastro-form")
-        form.addEventListener("submit", function(event) {
-          event.preventDefault();
-          //get the value of inputs
-          var yourUsername = document.getElementById("yourUsername").value;
-          var yourEmail = document.getElementById("yourEmail").value;
-          // store the values in localStorage
-          localStorage.setItem("yourUsername", yourUsername);
-          localStorage.setItem("yourEmail", yourEmail);
-          // send the form to server
-          form.submit();
-        });
-      
-        // check if there are any stored values in localStorage
-        if(localStorage.getItem("yourUsername")) {
-          // set the values to the input fields
-          document.getElementById("yourUsername").value = localStorage.getItem("yourUsername");
-          document.getElementById("yourEmail").value = localStorage.getItem("yourEmail");
-        }
-      
-      
-      </script>
-</div>
+    loginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+    });
+    
+    signupLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+    });
+</script>
+<script>
+    var form = document.querySelector("#cadastro-form")
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      //get the value of inputs
+      var yourUsername = document.getElementById("yourUsername").value;
+      var yourEmail = document.getElementById("yourEmail").value;
+      // store the values in localStorage
+      localStorage.setItem("yourUsername", yourUsername);
+      localStorage.setItem("yourEmail", yourEmail);
+      // send the form to server
+      form.submit();
+    });
+  
+    // check if there are any stored values in localStorage
+    if(localStorage.getItem("yourUsername")) {
+      // set the values to the input fields
+      document.getElementById("yourUsername").value = localStorage.getItem("yourUsername");
+      document.getElementById("yourEmail").value = localStorage.getItem("yourEmail");
+    }
+  
+  
+  </script>
+
 {% endblock %}

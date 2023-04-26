@@ -1,47 +1,48 @@
-{% extends 'base.html' %}
+{% extends 'base-form.html' %}
 {% load static %}
 
-{% block 'head' %}
-<link href="{% static 'evento/css/pergunta.css' %}" rel="stylesheet" >
+{% block 'css' %}
+<link href="{% static 'evento/css/eventos.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block 'navBar' %}
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light ">
+		<div class="container">
+            <a href="{% url 'evento:home' %}"><img src="{% static 'evento/img/logo.png' %}" alt="" height="70" width="70"></a>
+            <p style="color: white;">MANDA A BOA!</p>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon" ></span>
+			</button>
+			<div class="collapse navbar-collapse ml-auto" id="navbarNav" >
+				<ul class="navbar-nav ml-auto" style="color: white;">
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'evento:chat' evento.id %}" style="color: white;">Chat de perguntas</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'usuario:admin_palestrante' %}" style="color: white;">Area Admin</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 {% endblock %}
 
 {% block 'conteudo' %}
-<section class="section-1">
-  <div class="section-1-main">
-      <nav>
-        <div class="container imagem-nav">
-          <a href="{% url 'evento:home'%}">
-            <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
-            </a>
-      </div>
-          <div class="nav-links">
-            <ul>
-                {% comment %} <li><a href="#">Entrar</a></li> {% endcomment %}
-                {% comment %} <li><a href="#" class="product-link">Criar evento &#8211; <span>Gratis</span></a></li> {% endcomment %}
-                <li><a href="{% url 'usuario:admin_palestrante' %}" class="btn btn-primary product-link">Admin</a></li>
-                <li><a href="{% url 'evento:chat' evento.id %}" class="btn btn-info product-link">Chat palestra</a></li>
-            </ul>
-        </div>
-          
-          <div class="nav-mobile-menu-btn">
-              
-              <img src="https://rvs-product-landing-page.vercel.app/Assets/Hamburger-Menu.svg" alt="" id="mobile-menu-btn">
-          </div>
-      </nav>
-</section>
-<div id="login-panel" class="d-flex flex-column align-items-center ">
-    <img class='mandaboa' src="{% static 'evento/img/mandaAboa.png' %}" height="300" width="424" />
-    <h3>mandaboa.tech/eventos </h3>
-    <h2>PIN DO EVENTO: {{evento.pin}}</h2>
-    <form class="d-flex flex-column align-items-center QR-CODE-MOBILE">
-      <img src="{{evento.qrCode.url }}" height="300" width="300" />
-    </form>
-    <br><br>
+	<!-- Conteúdo principal -->
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<img src="{% static 'evento/img/mandaAboa.png' %}" height="280" width="324" class="img-fluid">
+			</div>
+		</div>
 
-  </div>
-  <div class="col-sm-12 col-md-12 mx-auto text-center linkedin sticky-footer" style="position: absolute; bottom: 0" >
-    <a href="https://www.linkedin.com/in/emerson-messias/" target="_blank" style="color: white;">
-       Desenvolvido por: <i class="bi bi-linkedin"></i> <strong >Emerson Messias</strong> <br><br>
-    </a>
-  </div>
+		<div class="row mt-4 text-center">
+			<div class="col-md-6 offset-md-3 center">
+        <h2 style="color: white;">mandaboa.tech/eventos </h2>
+        <h3 style="color: white;">Pin do Evento: {{evento.pin}}</h3>
+        <img src="{{evento.qrCode.url }}" height="200" width="200" />
+			</div>
+		</div>
+	</div>
 {% endblock %}

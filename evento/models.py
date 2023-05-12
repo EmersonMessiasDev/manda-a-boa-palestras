@@ -30,7 +30,7 @@ class Evento(models.Model):
             # Se o ID ainda não foi definido, salve o modelo para que o ID seja gerado pelo banco de dados.
             super().save(*args, **kwargs)
         # Define os dados para o QR code
-        data = f'https://mandaboa.tech/faz_pergunta/{self.id}'
+        data = f'https://mandaboa.tech/pergunta/{self.id}'
 
         # Cria o QR code
         qr = qrcode.QRCode(version=1, box_size=10, border=5)

@@ -96,13 +96,11 @@ def relatorio(request, id):
                         mode='RGBA',
                         min_font_size = 10).generate(text) 
 
-        # Convert the image data to a data URI
         buffer = BytesIO()
         wordcloud.to_image().save(buffer, format='PNG')
         image_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
         data_uri = 'data:image/png;base64,' + image_data
 
-        # Pass the data URI to the template context
         context = {
             'wordcloud_data_uri': data_uri,
         }

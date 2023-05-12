@@ -27,6 +27,7 @@ CSRF_TRUSTED_ORIGINS = ['https://*.conteige.cloud/', 'https://*.127.0.0.1']
 INSTALLED_APPS = [
     'jazzmin',
     #! 'django_ajax',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

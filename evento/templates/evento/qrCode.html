@@ -29,21 +29,25 @@
 {% endblock %}
 
 {% block 'conteudo' %}
-	<!-- Conteúdo principal -->
-	<div class="container mt-4">
+<div class="container mt-4">
+	<div class="row">
+	  <div class="col-md-6">
+		<img src="{% static 'evento/img/mandaAboa.png' %}" height="450" width="450" class="img-fluid">
+	  </div>
+	  <div class="col-md-6">
 		<div class="row">
-			<div class="col-md-12 text-center">
-				<img src="{% static 'evento/img/mandaAboa.png' %}" height="280" width="324" class="img-fluid">
-			</div>
+		  <div class="col-md-12 text-center">
+			<h1 style="color: white;">www.mandaboa.tech/eventos </h1>
+			<h3 style="color: white;">Pin do Evento: <b><h3>{{evento.pin}}</h3></b></h3>
 		</div>
-
-		
-		<div class="row mt-4 text-center">
-			<div class="col-md-6 offset-md-3 center">
-        <h2 style="color: white;">mandaboa.tech/eventos </h2>
-        <h3 style="color: white;">Pin do Evento: {{evento.pin}}</h3>
-        <img src="{{evento.qrCode.url }}" height="300" width="300" />
-			</div>
 		</div>
+		<div class="row">
+		  <div class="col-md-12 text-center">
+			<img src="{{evento.qrCode.url }}" height="300" width="300" />
+		  </div>
+		</div>
+	  </div>
 	</div>
+  </div>
+  
 {% endblock %}

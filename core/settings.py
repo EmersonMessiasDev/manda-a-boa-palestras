@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-^sj)0#y^2@!!8j*7k#ysdbz3@lgdi-n&u!5govy!rwpht4==*m
 
 # ALLOWED_HOSTS = []
 DEBUG = False
-ALLOWED_HOSTS = ['177.131.140.87', 'localhost', '127.0.0.1','https://mandaboa.tech/','https://okgjto.conteige.cloud/','*']
+ALLOWED_HOSTS = ['177.131.140.87', 'localhost', '127.0.0.1','https://mandaboa.tech/','https://qbhliy.conteige.cloud/','*']
 CSRF_TRUSTED_ORIGINS = ['https://*.conteige.cloud/', 'https://*.127.0.0.1']
 
 

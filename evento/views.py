@@ -81,11 +81,11 @@ def faz_pergunta(request, id):
     
     #! Tratamento de palavras ofensivas
     pergunta = request.POST.get('pergunta')
-    # profanity.add_censor_words(lista_negra)
-    # if(profanity.contains_profanity(pergunta)): 
-    #     messages.add_message(request, constants.SUCCESS, f'ERRO!foi identificada palavras ofencisva na sua pergunta! se persistir você sera bloqueado!')
-    #     return redirect('evento:pergunta', id=evento_id.id)
-
+    for palavra in lista_negra:
+        if palavra in pergunta:
+            messages.add_message(request, constants.SUCCESS, f'ERRO!Foi identificada palavras ofencisva na sua pergunta! se persistir você sera bloqueado!')
+            return redirect('evento:pergunta', id=evento_id.id)
+    
     
     pergunta = Pergunta.objects.create(
         nome = nome,

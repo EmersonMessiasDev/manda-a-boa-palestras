@@ -80,9 +80,6 @@ def faz_pergunta(request, id):
             messages.add_message(request, constants.SUCCESS, f'Seu nome não pode ficar vazio!')
             return redirect('evento:pergunta', id=evento_id.id)
     
-    if nome_palestrante == '':
-        nome_palestrante = 'Um dos palestrantes'
-
 
     #! Tratamento de palavras ofensivas
     pergunta = request.POST.get('pergunta')

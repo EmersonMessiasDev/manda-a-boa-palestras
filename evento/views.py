@@ -76,11 +76,20 @@ def faz_pergunta(request, id):
     nome = request.POST.get('nome')
     nome_palestrante = request.POST.get('palestrante')
     
+    if nome.strip() == '':
+            messages.add_message(request, constants.SUCCESS, f'Seu nome não pode ficar vazio!')
+            return redirect('evento:pergunta', id=evento_id.id)
+    
+    if nome_palestrante == '':
+        nome_palestrante = 'Um dos palestrantes'
 
-    
-    
+
     #! Tratamento de palavras ofensivas
     pergunta = request.POST.get('pergunta')
+    if pergunta.strip() == '':
+            messages.add_message(request, constants.SUCCESS, f'O campo pergunta não pode ficar vazio!')
+            return redirect('evento:pergunta', id=evento_id.id)
+        
     for palavra in lista_negra:
         if palavra in pergunta:
             messages.add_message(request, constants.SUCCESS, f'ERRO!Foi identificada palavras ofencisva na sua pergunta! se persistir você sera bloqueado!')

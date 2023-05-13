@@ -29,11 +29,12 @@
         {% csrf_token %}
         <input type="text" id="user" name="nome" placeholder="Digite seu nome" style="margin-bottom: 10px;">
         <select id="pessoa" placeholder="Palestrante" name="palestrante" >
-            <option value="Pergunta aberta">Para quem quer fazer a pergunta?</option>
+            <option value="Qaulquer um responder">Para quem quer fazer a pergunta?</option>
             {% for palestrante in palestrante  %}
             <option value="{{palestrante.nome}}">{{palestrante.nome}}</option>
             {% endfor %}
         </select>
+        <textarea id="pergunta" placeholder="Pergunta" name="pergunta" rows="4" cols="50" style="margin-top: 10px;"></textarea>
         <button type="submit" class="login-button" style="margin-top: 10px;">Enviar Pergunta</button>
     </form>
     <br><br><br>

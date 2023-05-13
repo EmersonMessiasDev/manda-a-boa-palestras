@@ -13,7 +13,8 @@
                 <a href="{% url 'evento:home'%}">
                     <img src="{% static 'evento/img/logo.png' %}" alt="Logo" class="mr-2" height="70" width="70">
                 </a>
-                <h4 class="d-inline" style="color: white;">{{evento.nome}}</h4>
+                <h4 class="d-inline" id="titulo-evento" style="color: white;">{{evento.nome}}</h4>
+
             </div>           
        </nav>
   </section>
@@ -21,27 +22,25 @@
     <p class="text-center imagem-pergunta">
         <img  src="{% static 'evento/img/mandaAboa.png' %}" height="280" width="324" />
     </p>
-    <h3>Faça sua pergunta</h3>
+    <h4 class="d-inline" id="titulo-evento" style="color: white;">Faça sua pergunta</h4>
+
+    
     <form action="{% url 'evento:faz_pergunta' evento.id %}" method="POST" class='form-pergunta'>
         {% csrf_token %}
-        <input type="text" id="user" name="nome" placeholder="Digite seu nome">
-        <br>
-        <select id="pessoa" placeholder="Palestrante" name="palestrante">
+        <input type="text" id="user" name="nome" placeholder="Digite seu nome" style="margin-bottom: 10px;">
+        <select id="pessoa" placeholder="Palestrante" name="palestrante" >
             <option value="">Para quem quer fazer a pergunta?</option>
             {% for palestrante in palestrante  %}
             <option value="{{palestrante.nome}}">{{palestrante.nome}}</option>
             {% endfor %}
         </select>
-        <br>
-        <textarea id="pergunta" placeholder="Pergunta" name="pergunta" rows="4" cols="50"></textarea>
-        <hr>
-        <button type="submit" class="login-button">Enviar Pergunta</button>
+        <textarea id="pergunta" placeholder="Pergunta" name="pergunta" rows="4" cols="50" style="margin-top: 10px;"></textarea>
+        <button type="submit" class="login-button" style="margin-top: 10px;">Enviar Pergunta</button>
     </form>
-    
-</div>
-
+    <br><br><br>
 <footer class="text-center mt-4 py-3 fixed-bottom" style="color: white;">
     <p>Desenvolvido - <i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/emerson-messias/"><span style="color: white;"> Emerson Messias</span></a></p>
 </footer>
-{% endblock %}
+</div>
 
+{% endblock %}

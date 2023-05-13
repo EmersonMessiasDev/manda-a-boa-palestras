@@ -16,7 +16,9 @@ body {
 }
 .form-pergunta{
 	z-index: 9999 !important;
+	
 }
+
 #login-panel, #signup-panel {
 	position: absolute;
 	width: 600px;
@@ -31,7 +33,7 @@ body {
 }
 #login-panel h3, #signup-panel h3 {
 	font-size: 26px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 form {
 	margin: auto;
@@ -159,6 +161,42 @@ label a {
 		margin-top: 5rem;
 	}
 }
+@media screen and (max-width: 375px) and (max-height: 667px) {
+	.section-1 .section-1-main nav img {
+		margin-left: -14rem;
+	}
+	img {
+    margin-left: -4rem;
+	}
+	#login-panel{
+		margin-top: 3rem;
+	}
+	body {
+		background-image: url(https://images.unsplash.com/photo-1638272181967-7d3772a91265?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		justify-content: center;
+		height: 104.5vh;
+		overflow-x: hidden;
+	  }
+	  .section-1 .imagem-nav {
+		margin-left: 10rem;
+		align-items: center;
+		z-index: 9999;
+	}
+	
+	.QR-CODE-MOBILE{
+		margin-left: 7rem;
+		
+	}
+	.mandaboa{
+		margin-left: 2rem;
+		margin-top: 2rem;
+	}
+  }
+
 .section-1 {
     width: 100%;
     background-repeat: no-repeat;
@@ -179,6 +217,7 @@ label a {
 }
 .section-1 .section-1-main nav .nav-logo img, main .section-1 .section-1-main nav .nav-links ul li a img {
     display: block;
+	
 }
 .section-1 .section-1-main nav .nav-links ul {
     display: flex;
@@ -220,6 +259,7 @@ label a {
 .section-1 .section-1-main .section-content .section-1-img {
     margin-top: 50px;
     width: 100%;
+	
 }
 
 
